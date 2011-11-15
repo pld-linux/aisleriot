@@ -1,11 +1,11 @@
 Summary:	A collection of card games
 Name:		aisleriot
-Version:	3.2.1
+Version:	3.2.2
 Release:	1
 License:	GPL v3+ and LGPL v3+ and GFDL
 Group:		X11/Applications/Games
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/aisleriot/3.2/%{name}-%{version}.tar.xz
-# Source0-md5:	e25a6df872ed1593b1d590561e3e91fb
+# Source0-md5:	cf8f6a8c51e54a9f8945a02b521dd40a
 URL:		http://live.gnome.org/Aisleriot
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf >= 2.53
