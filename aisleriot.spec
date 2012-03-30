@@ -1,18 +1,18 @@
 Summary:	A collection of card games
 Name:		aisleriot
-Version:	3.2.2
+Version:	3.4.0.1
 Release:	1
 License:	GPL v3+ and LGPL v3+ and GFDL
 Group:		X11/Applications/Games
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/aisleriot/3.2/%{name}-%{version}.tar.xz
-# Source0-md5:	cf8f6a8c51e54a9f8945a02b521dd40a
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/aisleriot/3.4/%{name}-%{version}.tar.xz
+# Source0-md5:	83348365662e7d8e64217c28d5e2fa4e
 URL:		http://live.gnome.org/Aisleriot
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	cairo-devel >= 1.10.0
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.26.0
+BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common
 BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	guile-devel >= 5:2.0
@@ -29,6 +29,7 @@ BuildRequires:	yelp-tools >= 3.2.0
 Requires(post,preun):	GConf2
 Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	gtk-update-icon-cache
+Requires:	glib2 >= 1:2.32.0
 Requires:	guile >= 5:2.0
 Requires:	hicolor-icon-theme
 Provides:	gnome-games-sol = %{version}
@@ -85,6 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/sol
 %dir %{_libdir}/aisleriot
 %attr(755,root,root) %{_libdir}/aisleriot/ar-cards-renderer
+%{_libdir}/aisleriot/guile
 %{_sysconfdir}/gconf/schemas/aisleriot.schemas
 %{_datadir}/aisleriot
 %{_datadir}/glib-2.0/schemas/org.gnome.Patience.WindowState.gschema.xml
