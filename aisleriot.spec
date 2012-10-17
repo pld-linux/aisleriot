@@ -1,11 +1,11 @@
 Summary:	A collection of card games
 Name:		aisleriot
-Version:	3.4.1
+Version:	3.6.1
 Release:	1
 License:	GPL v3+ and LGPL v3+ and GFDL
 Group:		X11/Applications/Games
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/aisleriot/3.4/%{name}-%{version}.tar.xz
-# Source0-md5:	0de8ef6a68765f89582a27eeb479f8fe
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/aisleriot/3.6/%{name}-%{version}.tar.xz
+# Source0-md5:	e30fda02b0fc6ad281e1b9eb0a82319a
 URL:		http://live.gnome.org/Aisleriot
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf >= 2.53
@@ -14,7 +14,7 @@ BuildRequires:	cairo-devel >= 1.10.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common
-BuildRequires:	gtk+3-devel >= 3.0.0
+BuildRequires:	gtk+3-devel >= 3.4.0
 BuildRequires:	guile-devel >= 5:2.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	itstool
@@ -91,7 +91,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/aisleriot.schemas
 %{_datadir}/aisleriot
 %{_datadir}/glib-2.0/schemas/org.gnome.Patience.WindowState.gschema.xml
-%{_desktopdir}/freecell.desktop
 %{_desktopdir}/sol.desktop
 %{_iconsdir}/hicolor/*/*/*.png
 %{_mandir}/man6/sol.6*
