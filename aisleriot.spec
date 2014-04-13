@@ -1,12 +1,12 @@
 Summary:	A collection of card games
 Name:		aisleriot
-Version:	3.6.2
+Version:	3.12.0
 Release:	1
 License:	GPL v3+ and LGPL v3+ and GFDL
 Group:		X11/Applications/Games
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/aisleriot/3.6/%{name}-%{version}.tar.xz
-# Source0-md5:	70a3ac85ffecbb08b17b047677c99e5d
-URL:		http://live.gnome.org/Aisleriot
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/aisleriot/3.12/%{name}-%{version}.tar.xz
+# Source0-md5:	a901064d8b14f35457cf017d9f073405
+URL:		https://wiki.gnome.org/Apps/Aisleriot
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
@@ -55,6 +55,7 @@ language (Scheme).
 %{__automake}
 %configure \
 	--disable-silent-rules \
+	--with-pysol-card-theme-path=%{_datadir}/pysol \
 	--with-guile="2.0"
 %{__make} -j1
 
@@ -70,6 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
+%update_icon_cache HighContrast
 %update_icon_cache hicolor
 %gconf_schema_install aisleriot.schemas
 %glib_compile_schemas
@@ -78,6 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_uninstall aisleriot.schemas
 
 %postun
+%update_icon_cache HighContrast
 %update_icon_cache hicolor
 %glib_compile_schemas
 
@@ -93,4 +96,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/glib-2.0/schemas/org.gnome.Patience.WindowState.gschema.xml
 %{_desktopdir}/sol.desktop
 %{_iconsdir}/hicolor/*/*/*.png
+%{_iconsdir}/HighContrast/scalable/*/*.svg
 %{_mandir}/man6/sol.6*
