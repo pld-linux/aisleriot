@@ -1,12 +1,12 @@
 Summary:	A collection of card games
 Summary(pl.UTF-8):	Kolekcja gier karcianych
 Name:		aisleriot
-Version:	3.18.1
+Version:	3.18.2
 Release:	1
 License:	GPL v3+ and LGPL v3+ and GFDL
 Group:		X11/Applications/Games
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/aisleriot/3.18/%{name}-%{version}.tar.xz
-# Source0-md5:	47cfc9a2d6006eea0f79e8a18a7f0376
+# Source0-md5:	7f2f022fdf20bea76d1d00919006c6f7
 URL:		https://wiki.gnome.org/Apps/Aisleriot
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf >= 2.53
