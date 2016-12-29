@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_with	qt	# Support for QtSvg based formats (kde,native)
+#
 Summary:	A collection of card games
 Summary(pl.UTF-8):	Kolekcja gier karcianych
 Name:		aisleriot
@@ -8,7 +12,8 @@ Group:		X11/Applications/Games
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/aisleriot/3.22/%{name}-%{version}.tar.xz
 # Source0-md5:	45dfa5af56454529d8216972958e9245
 URL:		https://wiki.gnome.org/Apps/Aisleriot
-BuildRequires:	GConf2-devel
+BuildRequires:	GConf2-devel >= 2.0
+%{?with_qt:BuildRequires:	Qt5Svg-devel >= 5.0.0}
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	cairo-devel >= 1.10.0
@@ -31,7 +36,7 @@ BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools >= 3.2.0
-Requires(post,preun):	GConf2
+Requires(post,preun):	GConf2 >= 2.0
 Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	cairo >= 1.10.0
@@ -81,6 +86,8 @@ Obsługa Aisleriota dla Valgrinda.
 %{__automake}
 bash %configure \
 	--disable-silent-rules \
+	--with-card-theme-formats=svg,fixed,pysol%{?with_qt:,kde,native} \
+	--with-kde-card-theme-path=%{_datadir}/apps/carddecks \
 	--with-pysol-card-theme-path=%{_datadir}/pysol \
 	--with-guile="2.0"
 %{__make} -j1
