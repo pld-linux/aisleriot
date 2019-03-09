@@ -5,12 +5,12 @@
 Summary:	A collection of card games
 Summary(pl.UTF-8):	Kolekcja gier karcianych
 Name:		aisleriot
-Version:	3.22.2
+Version:	3.22.7
 Release:	1
 License:	GPL v3+ and LGPL v3+ and GFDL
 Group:		X11/Applications/Games
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/aisleriot/3.22/%{name}-%{version}.tar.xz
-# Source0-md5:	0e2a65ce0deaedd0ce6d11b70d6223e2
+# Source0-md5:	d62c15ea4e30afcda4fd94e8f440336e
 URL:		https://wiki.gnome.org/Apps/Aisleriot
 BuildRequires:	GConf2-devel >= 2.0
 %{?with_qt:BuildRequires:	Qt5Svg-devel >= 5.0.0}
@@ -22,7 +22,7 @@ BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common
 BuildRequires:	gtk+3-devel >= 3.4.0
-BuildRequires:	guile-devel >= 5:2.0
+BuildRequires:	guile-devel >= 5:2.2
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	itstool
 BuildRequires:	libcanberra-gtk3-devel >= 0.26
@@ -42,7 +42,7 @@ Requires(post,postun):	gtk-update-icon-cache
 Requires:	cairo >= 1.10.0
 Requires:	glib2 >= 1:2.32.0
 Requires:	gtk+3 >= 3.4.0
-Requires:	guile >= 5:2.0
+Requires:	guile >= 5:2.2
 Requires:	hicolor-icon-theme
 Requires:	libcanberra-gtk3 >= 0.26
 Requires:	librsvg >= 2.32.0
@@ -89,7 +89,7 @@ bash %configure \
 	--with-card-theme-formats=svg,fixed,pysol%{?with_qt:,kde,native} \
 	--with-kde-card-theme-path=%{_datadir}/apps/carddecks \
 	--with-pysol-card-theme-path=%{_datadir}/pysol \
-	--with-guile="2.0"
+	--with-guile="2.2"
 %{__make} -j1
 
 %install
@@ -121,8 +121,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS TODO
 %attr(755,root,root) %{_bindir}/sol
-%dir %{_libdir}/aisleriot
-%attr(755,root,root) %{_libdir}/aisleriot/ar-cards-renderer
+%dir %{_libexecdir}/aisleriot
+%attr(755,root,root) %{_libexecdir}/aisleriot/ar-cards-renderer
 %{_libdir}/aisleriot/guile
 %{_sysconfdir}/gconf/schemas/aisleriot.schemas
 %{_datadir}/aisleriot
