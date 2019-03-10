@@ -6,7 +6,7 @@ Summary:	A collection of card games
 Summary(pl.UTF-8):	Kolekcja gier karcianych
 Name:		aisleriot
 Version:	3.22.7
-Release:	1
+Release:	2
 License:	GPL v3+ and LGPL v3+ and GFDL
 Group:		X11/Applications/Games
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/aisleriot/3.22/%{name}-%{version}.tar.xz
@@ -123,6 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/sol
 %dir %{_libexecdir}/aisleriot
 %attr(755,root,root) %{_libexecdir}/aisleriot/ar-cards-renderer
+%dir %{_libdir}/aisleriot
 %{_libdir}/aisleriot/guile
 %{_sysconfdir}/gconf/schemas/aisleriot.schemas
 %{_datadir}/aisleriot
