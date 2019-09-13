@@ -5,12 +5,12 @@
 Summary:	A collection of card games
 Summary(pl.UTF-8):	Kolekcja gier karcianych
 Name:		aisleriot
-Version:	3.22.7
-Release:	2
+Version:	3.22.9
+Release:	1
 License:	GPL v3+ and LGPL v3+ and GFDL
 Group:		X11/Applications/Games
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/aisleriot/3.22/%{name}-%{version}.tar.xz
-# Source0-md5:	d62c15ea4e30afcda4fd94e8f440336e
+# Source0-md5:	121678a799d027640ddfb267384440b5
 URL:		https://wiki.gnome.org/Apps/Aisleriot
 BuildRequires:	GConf2-devel >= 2.0
 %{?with_qt:BuildRequires:	Qt5Svg-devel >= 5.0.0}
@@ -21,14 +21,14 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common
-BuildRequires:	gtk+3-devel >= 3.4.0
+BuildRequires:	gtk+3-devel >= 3.18.0
 BuildRequires:	guile-devel >= 5:2.2
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	itstool
 BuildRequires:	libcanberra-gtk3-devel >= 0.26
 BuildRequires:	librsvg-devel >= 2.32.0
 BuildRequires:	libstdc++-devel
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-progs
 BuildRequires:	pkgconfig >= 1:0.15
 BuildRequires:	rpmbuild(find_lang) >= 1.35
@@ -41,7 +41,7 @@ Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	cairo >= 1.10.0
 Requires:	glib2 >= 1:2.32.0
-Requires:	gtk+3 >= 3.4.0
+Requires:	gtk+3 >= 3.18.0
 Requires:	guile >= 5:2.2
 Requires:	hicolor-icon-theme
 Requires:	libcanberra-gtk3 >= 0.26
@@ -121,7 +121,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS TODO
 %attr(755,root,root) %{_bindir}/sol
+%if "%{_libexecdir}" != "%{_libdir}"
 %dir %{_libexecdir}/aisleriot
+%endif
 %attr(755,root,root) %{_libexecdir}/aisleriot/ar-cards-renderer
 %dir %{_libdir}/aisleriot
 %{_libdir}/aisleriot/guile
