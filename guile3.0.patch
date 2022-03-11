@@ -1,0 +1,19 @@
+--- aisleriot-3.22.9/configure.ac.orig	2019-09-09 21:51:48.000000000 +0200
++++ aisleriot-3.22.9/configure.ac	2022-03-11 18:42:44.387093335 +0100
+@@ -476,13 +476,13 @@
+ # Guile
+ # *****
+ 
+-guile_versions_all="2.2 2.0"
++guile_versions_all="3.0 2.2 2.0"
+ AC_MSG_CHECKING([which guile version to use])
+ AC_ARG_WITH([guile],
+-  [AS_HELP_STRING([--with-guile=2.2|2.0|auto],[Which guile version to use (default: auto)])],
++  [AS_HELP_STRING([--with-guile=3.0|2.2|2.0|auto],[Which guile version to use (default: auto)])],
+   [case "$with_guile" in
+      1.8) AC_MSG_ERROR([unsupported guile version $with_guile requested]) ;;
+-     2.0|2.2) guile_versions="$withval" ;;
++     2.0|2.2|3.0) guile_versions="$withval" ;;
+      auto) guile_versions="$guile_versions_all" ;;
+      *) AC_MSG_ERROR([unsupported guile version $with_guile requested]) ;;
+     esac],

@@ -6,11 +6,12 @@ Summary:	A collection of card games
 Summary(pl.UTF-8):	Kolekcja gier karcianych
 Name:		aisleriot
 Version:	3.22.9
-Release:	1
+Release:	2
 License:	GPL v3+ and LGPL v3+ and GFDL
 Group:		X11/Applications/Games
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/aisleriot/3.22/%{name}-%{version}.tar.xz
 # Source0-md5:	121678a799d027640ddfb267384440b5
+Patch0:		guile3.0.patch
 URL:		https://wiki.gnome.org/Apps/Aisleriot
 BuildRequires:	GConf2-devel >= 2.0
 %{?with_qt:BuildRequires:	Qt5Svg-devel >= 5.0.0}
@@ -76,6 +77,7 @@ Obsługa Aisleriota dla Valgrinda.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__intltoolize}
@@ -89,7 +91,7 @@ bash %configure \
 	--with-card-theme-formats=svg,fixed,pysol%{?with_qt:,kde,native} \
 	--with-kde-card-theme-path=%{_datadir}/apps/carddecks \
 	--with-pysol-card-theme-path=%{_datadir}/pysol \
-	--with-guile="2.2"
+	--with-guile="3.0"
 %{__make} -j1
 
 %install
