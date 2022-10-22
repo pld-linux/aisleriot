@@ -77,6 +77,7 @@ Obsługa Aisleriota dla Valgrinda.
 	-Dtheme_pysol=true \
 	-Dtheme_pysol_path=%{_datadir}/pysol \
 	-Dprefix=/usr \
+	-Dlibdir=%{_libdir} \
 	-Dbuildtype=debugoptimized
 
 cd build
