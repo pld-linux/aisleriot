@@ -13,7 +13,6 @@ Source0:	https://gitlab.gnome.org/GNOME/aisleriot/-/archive/%{version}/%{name}-%
 # Source0-md5:	77f03df941fe9236652e68a9d79490d7
 URL:		https://wiki.gnome.org/Apps/Aisleriot
 %{?with_qt:BuildRequires:	Qt5Svg-devel >= 5.0.0}
-BuildRequires:	lsb-release
 BuildRequires:	cairo-devel >= 1.10.0
 BuildRequires:	desktop-file-utils
 BuildRequires:	gettext-tools
@@ -25,11 +24,11 @@ BuildRequires:	librsvg-devel >= 2.32.0
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-progs
+BuildRequires:	lsb-release
 BuildRequires:	pkgconfig >= 1:0.15
 BuildRequires:	rpmbuild(find_lang) >= 1.35
 BuildRequires:	rpmbuild(macros) >= 2.000
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	bzip2
 BuildRequires:	yelp-tools >= 3.2.0
 Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
@@ -86,7 +85,7 @@ cd build
 %install
 rm -rf $RPM_BUILD_ROOT
 cd  build
-%{ninja_install} 
+%{ninja_install}
 
 %find_lang %{name} --with-gnome
 
@@ -119,7 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/aisleriot/guile
 %{_datadir}/aisleriot
 %{_datadir}/glib-2.0/schemas/org.gnome.Patience.WindowState.gschema.xml
-/usr/share/metainfo/sol.metainfo.xml
+%{_datadir}/metainfo/sol.metainfo.xml
 %{_desktopdir}/sol.desktop
 %{_iconsdir}/hicolor/*x*/apps/gnome-aisleriot.png
 %{_iconsdir}/hicolor/*x*/apps/gnome-freecell.png
