@@ -21,10 +21,12 @@ BuildRequires:	guile-devel >= 5:2.2
 BuildRequires:	itstool
 BuildRequires:	libcanberra-gtk3-devel >= 0.26
 BuildRequires:	librsvg-devel >= 2.32.0
-BuildRequires:	libstdc++-devel
+BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-progs
 BuildRequires:	lsb-release
+BuildRequires:	meson >= 0.62.0
+BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.15
 BuildRequires:	rpmbuild(find_lang) >= 1.35
 BuildRequires:	rpmbuild(macros) >= 2.000
@@ -71,22 +73,18 @@ Obsługa Aisleriota dla Valgrinda.
 %setup -q
 
 %build
-%{__meson} build \
+%meson build \
 	-Dtheme_kde=false \
 	%{?with_qt:-Dtheme_svg_qtsvg=true -Dtheme_kde=true -Dtheme_kde_path=%{_datadir}/apps/carddecks} \
 	-Dtheme_pysol=true \
 	-Dtheme_pysol_path=%{_datadir}/pysol \
-	-Dprefix=/usr \
-	-Dlibdir=%{_libdir} \
-	-Dbuildtype=debugoptimized
 
-cd build
-%{ninja_build}
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-cd  build
-%{ninja_install}
+
+%ninja_install -C build
 
 %find_lang %{name} --with-gnome
 
@@ -94,20 +92,14 @@ cd  build
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%update_icon_cache HighContrast
 %update_icon_cache hicolor
-%gconf_schema_install aisleriot.schemas
 %glib_compile_schemas
-
-%preun
-%gconf_schema_uninstall aisleriot.schemas
 
 %postun
-%update_icon_cache HighContrast
 %update_icon_cache hicolor
 %glib_compile_schemas
 
-%files -f build/%{name}.lang
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS TODO
 %attr(755,root,root) %{_bindir}/sol
