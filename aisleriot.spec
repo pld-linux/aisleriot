@@ -41,8 +41,8 @@ Requires:	guile >= 5:2.2
 Requires:	hicolor-icon-theme
 Requires:	libcanberra-gtk3 >= 0.26
 Requires:	librsvg >= 2.32.0
-Provides:	gnome-games-sol = %{version}
-Obsoletes:	gnome-games-sol
+Provides:	gnome-games-sol = 1:%{version}
+Obsoletes:	gnome-games-sol < 1:3.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
