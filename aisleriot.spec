@@ -9,6 +9,7 @@ Version:	3.22.33
 Release:	1
 License:	GPL v3+ and LGPL v3+ and GFDL
 Group:		X11/Applications/Games
+#Source0Download: https://gitlab.gnome.org/GNOME/aisleriot/-/tags
 Source0:	https://gitlab.gnome.org/GNOME/aisleriot/-/archive/%{version}/%{name}-%{version}.tar.bz2
 # Source0-md5:	c91bbf0ab0d685599b159a6cd043f8a1
 URL:		https://wiki.gnome.org/Apps/Aisleriot
