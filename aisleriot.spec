@@ -5,13 +5,14 @@
 Summary:	A collection of card games
 Summary(pl.UTF-8):	Kolekcja gier karcianych
 Name:		aisleriot
-Version:	3.22.33
+Version:	3.22.35
 Release:	1
 License:	GPL v3+ and LGPL v3+ and GFDL
 Group:		X11/Applications/Games
+# or https://download.gnome.org/sources/aisleriot/3.22/%{name}-%{version}.tar.xz
 #Source0Download: https://gitlab.gnome.org/GNOME/aisleriot/-/tags
 Source0:	https://gitlab.gnome.org/GNOME/aisleriot/-/archive/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	c91bbf0ab0d685599b159a6cd043f8a1
+# Source0-md5:	b98132076e7a9a2662e8b5c630d051fd
 URL:		https://wiki.gnome.org/Apps/Aisleriot
 %{?with_qt:BuildRequires:	Qt5Svg-devel >= 5.0.0}
 BuildRequires:	cairo-devel >= 1.10.0
@@ -30,7 +31,7 @@ BuildRequires:	meson >= 0.62.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.15
 BuildRequires:	rpmbuild(find_lang) >= 1.35
-BuildRequires:	rpmbuild(macros) >= 2.000
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	yelp-tools >= 3.2.0
 Requires(post,postun):	glib2 >= 1:2.32.0
@@ -74,18 +75,18 @@ Obsługa Aisleriota dla Valgrinda.
 %setup -q
 
 %build
-%meson build \
+%meson \
 	-Dtheme_kde=false \
 	%{?with_qt:-Dtheme_svg_qtsvg=true -Dtheme_kde=true -Dtheme_kde_path=%{_datadir}/apps/carddecks} \
 	-Dtheme_pysol=true \
 	-Dtheme_pysol_path=%{_datadir}/pysol \
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %find_lang %{name} --with-gnome
 
